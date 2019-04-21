@@ -85,7 +85,6 @@ Yd2XdwbtVftRfPA9x2JE
 d62DMKQq5UUm8up3ka7K
 dkEmC6Acadn1NCJTJl0Z
 eVaQ2EmwbiE06qBidrB1
-gZ51TjeuGA6VdKPZu8gM
 hcXcZV0ipk7eAvD5mE1X
 jKnCOnZVFLOMJXcVSZHt
 mFNDO830cBjI7mBvDBGw
@@ -121,7 +120,7 @@ fun main(args: Array<String>) {
         }
 
         if ((categorie == null || format == null) && !KNOWN_TALKS_WITH_DATA_ISSUE.contains(talk.id)) {
-            println("NEW TALK WITH DATA ISSUE uid=" + talk.id + " title=" + talk.title + " speakers=" + speakersList)
+            println("NEW TALK WITH DATA ISSUE uid=" + talk.id + " title=" + talk.title + " speakers=" + speakers)
         }
     }
 
