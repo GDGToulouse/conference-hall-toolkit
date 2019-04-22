@@ -9,7 +9,7 @@ import com.github.ajalt.clikt.parameters.types.file
 import java.io.File
 
 
-class Check : CliktCommand(help = "Check new Talks with data issues") {
+object Check : CliktCommand(name = "check", help = "Check new Talks with data issues") {
     private val eventId: String by option("-e", "--event", help = "the event Id").required()
     private val apiKey: String by option("-k", "--api-key", help = "the api key").required()
     private val alreadyKnown: File by argument(help = "a file with talk id per line that already have a data issue")
