@@ -31,7 +31,7 @@ object Check : CliktCommand(name = "check", help = "Check new Talks with data is
                 println("No new talk with data issue")
             else
                 newTalksWithIssue.forEachIndexed { idx, talk ->
-                    println("$idx / ⚠️ NEW TALK WITH DATA ISSUE [${talk.id}] ${talk.title}\n\tspeakers=${talk.speakers()}")
+                    println("$idx / ⚠️ NEW TALK WITH DATA ISSUE [${talk.id}] ${talk.title}\n\tspeakers=${talk.speakerNames()}")
                 }
         }
 }

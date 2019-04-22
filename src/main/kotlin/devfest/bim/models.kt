@@ -39,12 +39,33 @@ data class Speaker(
     val displayName: String?,
     val bio: String,
     val company: String,
+    val city: String,
     val photoURL: String,
-    val twitter: String,
-    val github: String
+    val twitter: String?,
+    val github: String?
 ) {
     override fun toString() =
         if (displayName == null || displayName.isBlank()) uid else displayName
+}
+
+data class Social(
+    val type: String,
+    val name: String
+) {
+    val link: String
+        get() = when (type) {
+            "twitter" -> "https://twitter.com/$name"
+            "github"  -> "https://github.com/$name"
+            else      -> ""
+        }
+
+    companion object {
+        fun twitter(handle: String): Social =
+            Social("twitter", if (handle.startsWith("@")) handle.substring(1) else handle)
+
+        fun github(name: String): Social =
+            Social("github", if (name.startsWith("@")) name.substring(1) else name)
+    }
 }
 
 data class Talk(
