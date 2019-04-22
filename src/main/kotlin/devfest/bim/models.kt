@@ -23,7 +23,6 @@ data class Category(
     val description: String,
     val id: String
 ) {
-
     override fun toString() = name
 }
 

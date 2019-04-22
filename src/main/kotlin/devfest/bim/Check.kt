@@ -1,55 +1,37 @@
 package devfest.bim
 
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
+import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.parameters.arguments.argument
+import com.github.ajalt.clikt.parameters.arguments.default
+import com.github.ajalt.clikt.parameters.options.option
+import com.github.ajalt.clikt.parameters.options.required
+import com.github.ajalt.clikt.parameters.types.file
 import java.io.File
-import java.net.URL
 
 
-// list of talk ID with already known data issue (missing category/format):
-private val talksWithDataIssue =
-    File("KNOWN_TALKS_WITH_DATA_ISSUE.txt").readLines()
-        .filter { it.isNotBlank() }
+class Check : CliktCommand(help = "Check new Talks with data issues") {
+    private val eventId: String by option("-e", "--event", help = "the event Id").required()
+    private val apiKey: String by option("-k", "--api-key", help = "the api key").required()
+    private val alreadyKnown: File by argument(help = "a file with talk id per line that already have a data issue")
+        .file(exists = true, readable = true, fileOkay = true)
+        .default(File("KNOWN_TALKS_WITH_DATA_ISSUE.txt"))
 
-private val adapter: JsonAdapter<Event> =
-    Moshi.Builder()
-        .build()
-        .adapter(Event::class.java)
+    override fun run() =
+        with(Events(eventId, apiKey)) {
+            val talksWithDataIssue =
+                alreadyKnown.readLines()
+                    .map { it.trim() }
+                    .filter { it.isNotBlank() }
 
-fun loadEvent(eventId: String, apiKey: String): Event {
-    // val data = File("/home/mpa/oss/workspace/devfest/2019/export-api.json").readText()
-    val url = "https://conference-hall.io/api/v1/event/$eventId?key=$apiKey"
-    val data = URL(url).readText()
-    return adapter.fromJson(data) ?: throw IllegalStateException("Event $eventId not found!")
-}
+            val newTalksWithIssue = event.talks
+                .filterNot { talksWithDataIssue.contains(it.id) }
+                .filter { it.category() == null || it.format() == null }
 
-fun main(args: Array<String>) {
-    if (args.size < 2) throw IllegalArgumentException("EventID and API key must be provided as command line args")
-    val (eventId, apiKey) = args
-
-    val event = loadEvent(eventId, apiKey)
-
-    fun Talk.category(): Category? =
-        event.categories.find { it.id == this.categories }
-
-    fun Talk.format(): Format? =
-        event.formats.find { it.id == this.formats }
-
-    fun Talk.speakers(): String =
-        this.speakers
-            .map { speakerId -> event.speakers.find { it.uid == speakerId } }
-            .joinToString(" and ")
-
-    val newTalksWithIssue = event.talks
-        .filterNot { talksWithDataIssue.contains(it.id) }
-        .filter { it.category() == null || it.format() == null }
-
-
-    if (newTalksWithIssue.isEmpty())
-        println("No new talk with data issue")
-    else
-        newTalksWithIssue.forEachIndexed { idx, talk ->
-            println("$idx / ⚠️ NEW TALK WITH DATA ISSUE [${talk.id}] ${talk.title}\n\tspeakers=${talk.speakers()}")
+            if (newTalksWithIssue.isEmpty())
+                println("No new talk with data issue")
+            else
+                newTalksWithIssue.forEachIndexed { idx, talk ->
+                    println("$idx / ⚠️ NEW TALK WITH DATA ISSUE [${talk.id}] ${talk.title}\n\tspeakers=${talk.speakers()}")
+                }
         }
-
 }

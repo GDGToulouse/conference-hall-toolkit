@@ -1,5 +1,6 @@
 plugins {
     id("org.jetbrains.kotlin.jvm").version("1.3.30")
+    application
 }
 
 repositories {
@@ -17,12 +18,18 @@ dependencies {
     implementation(moshi("adapters"))
     implementation(moshi("kotlin"))
 
-//    implementation ("com.opencsv:opencsv:4.0")
+    implementation("com.github.ajalt:clikt:1.7.0")
+
+}
+
+application {
+    // Define the main class for the application.
+    mainClassName = "devfest.bim.MainKt"
 }
 
 // Create fat jar
 tasks.withType<Jar> {
-    manifest.attributes["Main-Class"] = "devfest.bim.CheckKt"
+    manifest.attributes["Main-Class"] = application.mainClassName
 
     from(
         configurations.runtime.get().files.map {
