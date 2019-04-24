@@ -10,6 +10,24 @@ import java.io.File
 
 object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
 
+
+    data class Selection(val event: Event, val talkId: String, val feature: Boolean) {
+
+        val talk: Talk? =
+            event.talks.find { it.id == talkId }
+
+        companion object {
+            // FIXME parse line to retrieve: room, slot(hour), slides, videoId
+            fun fromLine(event: Event, line: String): Selection {
+                val cells = line.split(' ')
+                val talkId = cells[0]
+                val feature = "true" == cells[1]
+                return Selection(event, talkId, feature)
+            }
+        }
+    }
+
+
     private val eventId: String by option("-e", "--event", help = "the event Id").required()
     private val apiKey: String by option("-k", "--api-key", help = "the api key").required()
     private val selectedTalks: File by argument(help = "a file with talk id per line that have been selected")
@@ -18,37 +36,36 @@ object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
 
     override fun run() {
         with(Events(eventId, apiKey)) {
-
             val parentFile = selectedTalks.absoluteFile.parentFile
 
-            // FIXME parse line to retrieve: room, slot(hour), slides, videoId
+
             val selected =
                 selectedTalks.readLines()
                     .map { it.trim() }
                     .filter { it.isNotBlank() }
-                    .map { id -> id to event.talks.find { it.id == id } }
+                    .map { Selection.fromLine(event, it) }
 
 
-            selected.filter { it.second == null }
+            selected.filter { it.talk == null }
                 .forEachIndexed { idx, (id, _) ->
                     println("⚠️ $idx / talk not found: $id")
                 }
 
             // Talks
-            val talks = selected.mapNotNull { it.second }
-            fun Talk.toContent(): String =
+            fun Talk.toContent(draft: Boolean = false): String =
                 """---
                   |id: $id
                   |key: ${key()}
-                  |title: $title
+                  |title: "$title"
                   |level: $level
-                  |formats: ${format()?.name?:""}
+                  |formats: ${format()?.name ?: ""}
                   |tags:
-                  |  - ${category()?.name?:""}
+                  |  - ${category()?.name ?: ""}
                   |speakers:
-                  |${speakers().joinToString(separator = "\n") { "  - ${it.key()}"}}
+                  |${speakers().joinToString(separator = "\n") { "  - ${it.key()}" }}
                   |presentation:
                   |videoId:
+                  |draft: $draft
                   |---
                   |$abstract
                   |""".trimMargin()
@@ -58,29 +75,38 @@ object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
             if (talksDir.mkdirs()) {
                 println("Create folder $talksDir")
             }
-            talks.forEach { talk: Talk ->
-                val file = talksDir.resolve("${talk.key()}.md")
-                file.writeText(talk.toContent())
-            }
-
+            selected
+                .mapNotNull { it.talk }
+                .forEach { talk: Talk ->
+                    val file = talksDir.resolve("${talk.key()}.md")
+                    file.writeText(talk.toContent(true))
+                }
 
             // Speakers
-            val speakers = talks
-                .flatMap { it.speakers() }
-                .distinct()
+            val speakers = selected
+                .flatMap { selection ->
+                    selection.talk
+                        ?.speakers()
+                        ?.map { selection.feature to it }
+                        ?: emptyList()
+                }
+                .distinctBy { it.second }
 
-            fun Speaker.toContent(): String =
+            fun Speaker.toContent(feature: Boolean): String =
                 """---
                   |id: $uid
                   |key: ${key()}
-                  |name: $displayName
-                  |company: $company
-                  |city: $city
-                  |photoURL: $photoURL
+                  |feature: $feature
+                  |name: "$displayName"
+                  |company: "$company"
+                  |city: "$city"
+                  |photoURL: "$photoURL"
                   |socials:
-                  |${socials().joinToString("\n") { """  - icon: ${it.type}
-                                                      |    link: ${it.link}
-                                                      |    name: ${it.name}""".trimMargin()}}
+                  |${socials().joinToString("\n") {
+                    """  - icon: ${it.type}
+                      |    link: ${it.link}
+                      |    name: ${it.name}""".trimMargin()
+                }}
                   |---
                   |$bio
                   |""".trimMargin()
@@ -89,9 +115,9 @@ object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
             if (speakersDir.mkdirs()) {
                 println("Create folder $speakersDir")
             }
-            speakers.forEach { speaker: Speaker ->
+            speakers.forEach { (feature, speaker) ->
                 val file = speakersDir.resolve("${speaker.key()}.md")
-                file.writeText(speaker.toContent())
+                file.writeText(speaker.toContent(feature))
             }
 
 
