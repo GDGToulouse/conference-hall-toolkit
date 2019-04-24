@@ -28,12 +28,19 @@ application {
 }
 
 // Create fat jar
-tasks.withType<Jar> {
-    manifest.attributes["Main-Class"] = application.mainClassName
-
-    from(
-        configurations.runtime.get().files.map {
-            if (it.isDirectory) it else zipTree(it)
-        }
-    )
+tasks {
+  register("fatJar", Jar::class.java) {
+    archiveClassifier.set("all")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+      attributes("Main-Class" to application.mainClassName)
+    }
+    from(configurations.runtimeClasspath.get()
+        .onEach { println("add from dependencies: ${it.name}") }
+        .map { if (it.isDirectory) it else zipTree(it) })
+    val sourcesMain = sourceSets.main.get()
+    sourcesMain.allSource.forEach { println("add from sources: ${it.name}") }
+    from(sourcesMain.output)
+  }
 }
+
