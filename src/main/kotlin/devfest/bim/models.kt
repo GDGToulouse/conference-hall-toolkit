@@ -9,7 +9,6 @@ data class Event(
     val talks: List<Talk> = listOf(),
     val speakers: List<Speaker> = listOf(),
     val conferenceDates: ConferenceDate,
-    val address: String,
     val state: String
 )
 
