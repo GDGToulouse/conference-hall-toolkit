@@ -8,8 +8,7 @@ import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.file
 import java.io.File
 
-object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
-
+object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers and sessions content") {
 
     data class Selection(val event: Event, val talkId: String, val feature: Boolean) {
 
@@ -26,7 +25,6 @@ object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
             }
         }
     }
-
 
     private val eventId: String by option("-e", "--event", help = "the event Id").required()
     private val apiKey: String by option("-k", "--api-key", help = "the api key").required()
@@ -48,7 +46,7 @@ object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
 
             selected.filter { it.talk == null }
                 .forEachIndexed { idx, (id, _) ->
-                    println("⚠️ $idx / talk not found: $id")
+                    Logger.error { "⚠️ $idx / talk not found: $id" }
                 }
 
             // Talks
@@ -73,13 +71,14 @@ object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
             // Dir
             val talksDir = parentFile.resolve("content").resolve("sessions")
             if (talksDir.mkdirs()) {
-                println("Create folder $talksDir")
+                Logger.info { "Create folder $talksDir" }
             }
             selected
                 .mapNotNull { it.talk }
                 .forEach { talk: Talk ->
                     val file = talksDir.resolve("${talk.key()}.md")
                     file.writeText(talk.toContent(true))
+                    Logger.info { "Created file $file for ${talk.title}" }
                 }
 
             // Speakers
@@ -113,11 +112,12 @@ object GenerateContent : CliktCommand(name = "gen", help = "Generate content") {
 
             val speakersDir = parentFile.resolve("content").resolve("speakers")
             if (speakersDir.mkdirs()) {
-                println("Create folder $speakersDir")
+                Logger.info { "Create folder $speakersDir" }
             }
             speakers.forEach { (feature, speaker) ->
                 val file = speakersDir.resolve("${speaker.key()}.md")
                 file.writeText(speaker.toContent(feature))
+                Logger.info { "Created file $file for ${speaker.displayName}" }
             }
 
 

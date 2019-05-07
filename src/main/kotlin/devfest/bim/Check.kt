@@ -28,10 +28,10 @@ object Check : CliktCommand(name = "check", help = "Check new Talks with data is
                 .filter { it.category() == null || it.format() == null }
 
             if (newTalksWithIssue.isEmpty())
-                println("No new talk with data issue")
+                Logger.info { "No new talk with data issue" }
             else
                 newTalksWithIssue.forEachIndexed { idx, talk ->
-                    println("$idx / ⚠️ NEW TALK WITH DATA ISSUE [${talk.id}] ${talk.title}\n\tspeakers=${talk.speakerNames()}")
+                    Logger.warn { "$idx / ⚠️ NEW TALK WITH DATA ISSUE [${talk.id}] ${talk.title}\n\tspeakers=${talk.speakerNames()}" }
                 }
         }
 }

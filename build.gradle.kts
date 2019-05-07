@@ -19,7 +19,8 @@ dependencies {
     implementation(moshi("kotlin"))
 
     implementation("com.github.ajalt:clikt:1.7.0")
-
+    implementation("com.github.ajalt:mordant:1.2.1")
+    implementation("com.opencsv:opencsv:4.6")
 }
 
 application {

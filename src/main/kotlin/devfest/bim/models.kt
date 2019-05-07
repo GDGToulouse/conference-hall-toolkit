@@ -60,10 +60,16 @@ data class Social(
 
     companion object {
         fun twitter(handle: String): Social =
-            Social("twitter", if (handle.startsWith("@")) handle.substring(1) else handle)
+            Social(
+                "twitter",
+                if (handle.startsWith("@")) handle.substring(1) else handle
+            )
 
         fun github(name: String): Social =
-            Social("github", if (name.startsWith("@")) name.substring(1) else name)
+            Social(
+                "github",
+                if (name.startsWith("@")) name.substring(1) else name
+            )
     }
 }
 

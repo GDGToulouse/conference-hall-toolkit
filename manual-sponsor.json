@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Stack Labs",
+    "category": "Platinium",
+    "logoExtension": "svg",
+    "jobs": []
+  },
+  {
+    "name": "Altran",
+    "category": "Soutien",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Berger Levrault",
+    "category": "Gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Cenareo",
+    "category": "Platinium",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "CNES",
+    "category": "Soutien",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Commit 42",
+    "category": "Soutien",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Continental Digital Services France",
+    "category": "Gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Decasoft",
+    "category": "Soutien",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Github",
+    "category": "Gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "IBP",
+    "category": "Gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Ippon",
+    "category": "Gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Lyra Network",
+    "category": "Gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "MonkeyPatch",
+    "category": "Gold",
+    "jobs": [
+      {
+        "title": "Planteu•r•euse de bananiers",
+        "url": "http://www.monkeypatch.io/",
+        "contact": "contact@monkeypatch.io",
+        "city": "Toulouse"
+      }
+    ]
+  },
+  {
+    "name": "Morning",
+    "category": "Soutien",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Neosoft",
+    "category": "Gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "OneStock Retail",
+    "category": "Startup",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "SII",
+    "category": "Platinium",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Squoring Technologies",
+    "category": "Soutien",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Elasticsearch SARL",
+    "category": "Gold",
+    "logoExtension": "png",
+    "jobs": []
+  }
+]

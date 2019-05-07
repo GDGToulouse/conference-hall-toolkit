@@ -20,12 +20,6 @@ class Events(eventId: String, apiKey: String) {
         adapter.fromJson(data) ?: throw IllegalStateException("Event $eventId not found!")
     }
 
-    private fun String.normalize(): String =
-        Normalizer.normalize(this, Normalizer.Form.NFD)
-            .toLowerCase()
-            .replace(Regex("[\\s]"), "-")
-            .replace(Regex("[^\\p{ASCII}]"), "")
-            .replace(Regex("[\\W]"), "_")
 
     fun Speaker.key(): String =
         this.toString().toLowerCase().normalize()
