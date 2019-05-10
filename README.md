@@ -34,9 +34,10 @@ Notes: Selected talks should be define into the local `selected.txt` file
 ## Generate sponsors 
 
 1. Update the `Formulaire Sponsors.csv` by downloading it at <https://docs.google.com/forms/d/1OzB5Y8f8mHt4WP2EH28hD3iFABVebrdb44BHvhfjm3o/edit#responses>
-2. Update the `manual-sponsor.json` file to set `category`, `logoExtension`, and `jobs`
+2. Update the `manual-sponsor.json` file to set `category`, `logoExtension`, and `jobs`.
+WARNING, check the logo extension !
 
-3. Build content file 
+3. Build content file
 
 ```bash
 java -jar build/libs/conference-hall-toolkit-all.jar sponsor
