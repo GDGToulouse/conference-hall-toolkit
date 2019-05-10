@@ -63,7 +63,7 @@ object GenerateSponsors : CliktCommand(name = "sponsor", help = "Generate sponso
                   |category: $category
                   |logo: /images/partners/logo-$key.$logoExtension
                   |lang: ${if (lang == "Français") "fr" else "en"}
-                  |why: $why
+                  |why: "$why"
                   |${socialsDetails()}
                   |${jobsDetails()}
                   |draft: $draft
