@@ -62,6 +62,15 @@ data class Sponsor(
     val key: String
         get() = name.toLowerCase().normalize()
 
+    val socials: List<Social> by lazy {
+        (emptyList<Social>() +
+                (facebook?.let { listOf(Social.facebook(it)) } ?: emptyList()) +
+                (twitter?.let { listOf(Social.twitter(it)) } ?: emptyList()) +
+                (linkedin?.let { listOf(Social.linkedIn(it)) } ?: emptyList()))
+            .filter { it.name.isNotEmpty() }
+            .filter { it.name.toLowerCase() != "compte non actif"}
+    }
+
     val category: String by lazy {
         ManualSponsor.findByName(name)
             ?.category

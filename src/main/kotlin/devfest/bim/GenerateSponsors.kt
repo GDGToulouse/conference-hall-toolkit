@@ -24,25 +24,15 @@ object GenerateSponsors : CliktCommand(name = "sponsor", help = "Generate sponso
         val selected = Sponsor.all(sponsorsFile)
 
         fun Sponsor.socialsDetails(): String {
-            val hasSocials = listOf(facebook, linkedin, twitter).any { it != null }
-            return if (!hasSocials) ""
+
+            return if (socials.isEmpty()) ""
             else
                 "socials:\n" +
-                        if (facebook != null) """
-                    |  - icon: facebook
-                    |    link: https://www.facebook.com/$facebook
-                    |    name: facebook
-                    |""".trimMargin() else "" +
-                                if (twitter != null) """
-                    |  - icon: twitter
-                    |    link: https://twitter.com/${if (twitter.startsWith("@")) twitter.substring(1) else twitter}
-                    |    name: twitter
-                    |""".trimMargin() else "" +
-                                        if (linkedin != null) """
-                    |  - icon: linkedin
-                    |    link: https://www.linkedin.com/company/$linkedin
-                    |    name: linkedin
-                    |""".trimMargin() else ""
+                        socials.joinToString("\n") {
+                            """  - icon: ${it.type}
+                              |    link: ${it.link}
+                              |    name: ${it.name}""".trimMargin()
+                        }
         }
 
         fun Sponsor.jobsDetails(): String =

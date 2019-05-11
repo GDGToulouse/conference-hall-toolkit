@@ -53,9 +53,11 @@ data class Social(
 ) {
     val link: String
         get() = when (type) {
-            "twitter" -> "https://twitter.com/$name"
-            "github"  -> "https://github.com/$name"
-            else      -> ""
+            "twitter"  -> "https://twitter.com/$name"
+            "github"   -> "https://github.com/$name"
+            "facebook" -> "https://facebook.com/$name"
+            "linkedin" -> "https://linkedin.com/company/$name"
+            else       -> ""
         }
 
     companion object {
@@ -63,6 +65,22 @@ data class Social(
             Social(
                 "twitter",
                 if (handle.startsWith("@")) handle.substring(1) else handle
+            )
+
+        fun facebook(handle: String): Social =
+            Social(
+                "facebook",
+                when {
+                    handle.startsWith("http") -> handle.split("/").last()
+                    handle.startsWith("@")    -> handle.substring(1)
+                    else                      -> handle
+                }
+            )
+
+        fun linkedIn(handle: String): Social =
+            Social(
+                "linkedin",
+                if (handle.startsWith("http")) handle.split("/").last() else handle
             )
 
         fun github(name: String): Social =
