@@ -118,5 +118,11 @@
     "category": "Gold",
     "logoExtension": "png",
     "jobs": []
+  },
+  {
+    "name": "OpenAirline",
+    "category": "startup",
+    "logoExtension": "png",
+    "jobs": []
   }
 ]
