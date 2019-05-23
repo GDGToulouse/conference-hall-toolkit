@@ -51,6 +51,7 @@ object GenerateSponsors : CliktCommand(name = "sponsor", help = "Generate sponso
                   |title: $name
                   |type: partner
                   |category: $category
+                  |order: $order
                   |logo: /images/partners/logo-$key.$logoExtension
                   |lang: ${if (lang == "Français") "fr" else "en"}
                   |why: "$why"

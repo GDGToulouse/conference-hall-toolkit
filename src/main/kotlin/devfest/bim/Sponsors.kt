@@ -42,6 +42,7 @@ data class ManualSponsor(
 }
 
 data class Sponsor(
+    val order: Int,
     val timestamp: String,
     val name: String,
     val logo: String,
@@ -95,23 +96,24 @@ data class Sponsor(
                 .withSkipLines(1)
                 .build()
                 .readAll()
-                .map {
+                .mapIndexed { idx, tab ->
                     Sponsor(
-                        it[0],
-                        it[1],
-                        it[2],
-                        it[3].nullIfEmpty(),
-                        it[4].nullIfEmpty(),
-                        it[5].nullIfEmpty(),
-                        it[6],
-                        it[7],
-                        it[8].nullIfEmpty(),
-                        it[9].nullIfEmpty(),
-                        it[10].nullIfEmpty(),
-                        it[11],
-                        it[12].nullIfEmpty(),
-                        it[13].nullIfEmpty(),
-                        it[14]
+                        idx,
+                        tab[0],
+                        tab[1],
+                        tab[2],
+                        tab[3].nullIfEmpty(),
+                        tab[4].nullIfEmpty(),
+                        tab[5].nullIfEmpty(),
+                        tab[6],
+                        tab[7],
+                        tab[8].nullIfEmpty(),
+                        tab[9].nullIfEmpty(),
+                        tab[10].nullIfEmpty(),
+                        tab[11],
+                        tab[12].nullIfEmpty(),
+                        tab[13].nullIfEmpty(),
+                        tab[14]
                     )
                 }
     }
