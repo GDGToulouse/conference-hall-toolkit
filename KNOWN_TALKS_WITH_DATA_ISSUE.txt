@@ -1,36 +1,29 @@
-0dd7H2lGZLZfTZ7JCsqd
-2S9XtGGq3ouHnkivEDKC
-2d150oaj16QFbamSv5hE
-B8gr3HrZqJoTV0g1ZP28
-IYttvnyxM4rrnJOMU63d
-NYndMlT6CfXHKFKzJbVX
-QiGZM1ooWa4zOC20qiAL
-RXuQ2dEwz7zxqdfdLGc8
-YWOsQPUaQLesOZN6Wy4t
-aNpiQLFXDl1805pcZmYP
-iWpxkN8EOq8UIhUqd9LB
-nFdG4Agv5dVQBiVUMdo4
-xwAvvIJJfDdBD7N4oGa5
 
 # invited speaker:
 HJRThubF4uYPkb7jSUxi
 
-#### old, talks not fixed by speakers:
-6iKvfgwb0bnu3fO6ZEKO
+# keynotes:
+2S9XtGGq3ouHnkivEDKC
+
+# talks not fixed, but we know format/category
+2d150oaj16QFbamSv5hE
+B8gr3HrZqJoTV0g1ZP28
+0dd7H2lGZLZfTZ7JCsqd
+NYndMlT6CfXHKFKzJbVX
+QiGZM1ooWa4zOC20qiAL
+iWpxkN8EOq8UIhUqd9LB
+xwAvvIJJfDdBD7N4oGa5
+
+# not fixed, no news from the speakers:
+4cXBqzqw4p10VvAbraE72
 BIEsBUZjkFq9MXhDsxyC
-FOp0OYl6KvZyiCuE0o6M
+MGsQXlP2KHM6Ckq5vLHN
 MtItXvLU4l5tQk6ZVzbV
-Po6wnzL3l0yOgospSnxI
+4cXBqqw4p10VvAbraE72
 W1JFq0UHzkAOwWOZeE0h
-YcYbzTiENcd0afk3oP7c
 hcsFJ18KeWAYB26DCKZQ
 kO80PMrOv0r9oeFzoXY6
+mFNDO830cBjI7mBvDBGw
 mvexyFSjxFNSX4a26SNG
 n6srEN7tshROGUYldYDu
-0HglDYrSXWJuwuceUIMg
-3JfNO7UTnZrTjMUhWUwp
-4cXBqqw4p10VvAbraE72
-MGsQXlP2KHM6Ckq5vLHN
-P4UK2bKyC5R75RrZwUPn
-mFNDO830cBjI7mBvDBGw
 
