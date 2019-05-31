@@ -54,7 +54,7 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
                 """---
                   |id: $id
                   |key: ${key()}
-                  |title: "$title"
+                  |title: ${title.rawYaml()}
                   |level: $level
                   |formats: ${format()?.name ?: ""}
                   |tags:
@@ -96,10 +96,10 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
                   |id: $uid
                   |key: ${key()}
                   |feature: $feature
-                  |name: "$displayName"
-                  |company: "$company"
-                  |city: "$city"
-                  |photoURL: "$photoURL"
+                  |name: ${displayName?.rawYaml() ?: ""}
+                  |company: ${company.rawYaml()}
+                  |city: ${city.rawYaml()}
+                  |photoURL: ${photoURL.rawYaml()}
                   |socials:
                   |${socials().joinToString("\n") {
                     """  - icon: ${it.type}

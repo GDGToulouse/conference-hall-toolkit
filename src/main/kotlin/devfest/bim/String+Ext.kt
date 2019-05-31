@@ -13,6 +13,8 @@ fun String.normalize(): String =
 fun String.rawYaml(): String =
         "\""+replace("\"", "\\\"")+"\""
 
+
+
 fun String.nullIfEmpty(): String? =
     if (isEmpty()) null else this
 
