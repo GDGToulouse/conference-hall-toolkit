@@ -37,8 +37,8 @@ data class Speaker(
     val uid: String,
     val displayName: String?,
     val bio: String,
-    val company: String,
-    val city: String,
+    val company: String?,
+    val city: String?,
     val photoURL: String,
     val twitter: String?,
     val github: String?

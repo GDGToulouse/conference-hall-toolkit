@@ -1,6 +1,8 @@
-5qTyscBWtXLRb04TXEdB true
-McfMVcKDdZv68NSo2JIJ true
-Kwery1cbJrx3ZFj6x1JU true
-zVUXQkHQtSiGJeIwVd05 true
-McfMVcKDdZv68NSo2JIJ true
-2S9XtGGq3ouHnkivEDKC true
+                  id star room  sloth
+-------------------------------------
+5qTyscBWtXLRb04TXEdB true room0 slot0
+Kwery1cbJrx3ZFj6x1JU true room0 slot0
+zVUXQkHQtSiGJeIwVd05 true room0 slot0
+McfMVcKDdZv68NSo2JIJ true room0 slot0
+2S9XtGGq3ouHnkivEDKC true room0 slot0
+

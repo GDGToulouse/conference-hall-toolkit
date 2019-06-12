@@ -10,7 +10,13 @@ import java.io.File
 
 object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers and sessions content") {
 
-    data class Selection(val event: Event, val talkId: String, val feature: Boolean) {
+    data class Selection(
+        val event: Event,
+        val talkId: String,
+        val feature: Boolean,
+        val room: String,
+        val slot: String
+    ) {
 
         val talk: Talk? =
             event.talks.find { it.id == talkId }
@@ -18,10 +24,10 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
         companion object {
             // FIXME parse line to retrieve: room, slot(hour), slides, videoId
             fun fromLine(event: Event, line: String): Selection {
-                val cells = line.split(' ')
-                val talkId = cells[0]
-                val feature = "true" == cells[1]
-                return Selection(event, talkId, feature)
+                val cells = line.split(' ').toList()
+                val (talkId, sFeature, room, slot) = cells
+                val feature = "true" == sFeature
+                return Selection(event, talkId, feature, room, slot)
             }
         }
     }
@@ -39,10 +45,10 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
 
             val selected =
                 selectedTalks.readLines()
+                    .drop(2)
                     .map { it.trim() }
                     .filter { it.isNotBlank() }
                     .map { Selection.fromLine(event, it) }
-
 
             selected.filter { it.talk == null }
                 .forEachIndexed { idx, (id, _) ->
@@ -69,17 +75,38 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
                   |""".trimMargin()
 
             // Dir
-            val talksDir = parentFile.resolve("content").resolve("sessions")
+            val talksDir = parentFile / "content" / "sessions"
             if (talksDir.mkdirs()) {
                 Logger.info { "Create folder $talksDir" }
             }
             selected
                 .mapNotNull { it.talk }
                 .forEach { talk: Talk ->
-                    val file = talksDir.resolve("${talk.key()}.md")
+                    val file = talksDir / "${talk.key()}.md"
                     file.writeText(talk.toContent(true))
                     Logger.info { "Created file $file for ${talk.title}" }
                 }
+
+            // Create Yml
+            val sessionYml = selected
+                .mapNotNull { it.talk }
+                .joinToString(prefix = "items:\n", separator = "\n") { talk ->
+                    fun Speaker.yml(): String =
+                        """- name: $displayName
+                      |  photo: ${photoURL.rawYaml()}
+                      |  twitter: ${twitter ?: ""}""".trimMargin()
+
+                    """
+                      |${talk.speakers().map { it.key() }.joinToString("_")}:
+                      |  type: ${talk.format()?.name ?: ""}
+                      |  category: ${talk.category()?.name ?: ""}
+                      |  title: ${talk.title.rawYaml()}
+                      |  speakers :
+                      |${(talk.speakers().joinToString("\n") { it.yml() }).prependIndent("    ")}"""
+                        .trimMargin()
+                        .prependIndent("  ")
+                }
+            (parentFile / "content" / "sessions.yml").writeText(sessionYml)
 
             // Speakers
             val speakers = selected
@@ -97,8 +124,8 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
                   |key: ${key()}
                   |feature: $feature
                   |name: ${displayName?.rawYaml() ?: ""}
-                  |company: ${company.rawYaml()}
-                  |city: ${city.rawYaml()}
+                  |company: ${company?.rawYaml()?:""}
+                  |city: ${city?.rawYaml()?:""}
                   |photoURL: ${photoURL.rawYaml()}
                   |socials:
                   |${socials().joinToString("\n") {
@@ -110,12 +137,12 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
                   |$bio
                   |""".trimMargin()
 
-            val speakersDir = parentFile.resolve("content").resolve("speakers")
+            val speakersDir = parentFile / "content" / "speakers"
             if (speakersDir.mkdirs()) {
                 Logger.info { "Create folder $speakersDir" }
             }
             speakers.forEach { (feature, speaker) ->
-                val file = speakersDir.resolve("${speaker.key()}.md")
+                val file = speakersDir / "${speaker.key()}.md"
                 file.writeText(speaker.toContent(feature))
                 Logger.info { "Created file $file for ${speaker.displayName}" }
             }
