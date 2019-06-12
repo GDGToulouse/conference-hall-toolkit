@@ -74,14 +74,7 @@
   {
     "name": "MonkeyPatch",
     "category": "Gold",
-    "jobs": [
-      {
-        "title": "Planteu•r•euse de bananiers",
-        "url": "http://www.monkeypatch.io/",
-        "contact": "contact@monkeypatch.io",
-        "city": "Toulouse"
-      }
-    ]
+    "jobs": []
   },
   {
     "name": "Morning",
@@ -90,7 +83,7 @@
     "jobs": []
   },
   {
-    "name": "Neosoft",
+    "name": "NEO-SOFT Groupe",
     "category": "Gold",
     "logoExtension": "png",
     "jobs": []
@@ -114,7 +107,7 @@
     "jobs": []
   },
   {
-    "name": "Elasticsearch SARL",
+    "name": "Elastic",
     "category": "Gold",
     "logoExtension": "png",
     "jobs": []
@@ -122,6 +115,12 @@
   {
     "name": "OpenAirline",
     "category": "startup",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "SMILE",
+    "category": "gold",
     "logoExtension": "png",
     "jobs": []
   }

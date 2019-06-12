@@ -11,6 +11,25 @@ import java.io.File
 // then download as CSV
 // ---------------
 
+/*
+Ex manual-sponsor.json
+
+  {
+    "name": "MonkeyPatch",
+    "category": "Gold",
+    "jobs": [
+      {
+        "title": "Planteu•r•euse de bananiers",
+        "url": "http://www.monkeypatch.io/",
+        "contact": "contact@monkeypatch.io",
+        "city": "Toulouse"
+      }
+    ]
+  },
+
+
+ */
+
 object GenerateSponsors : CliktCommand(name = "sponsor", help = "Generate sponsor content") {
 
     private val sponsorsFile: File by argument(help = "the sponsor CSV file")
@@ -53,6 +72,7 @@ object GenerateSponsors : CliktCommand(name = "sponsor", help = "Generate sponso
                   |category: $category
                   |order: $order
                   |logo: /images/partners/logo-$key.$logoExtension
+                  |${website?.let { "website: $website" } ?: ""}
                   |lang: ${if (lang == "Français") "fr" else "en"}
                   |why: ${why?.rawYaml() ?: ""}
                   |${socialsDetails()}
