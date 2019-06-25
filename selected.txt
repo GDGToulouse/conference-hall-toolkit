@@ -1,8 +1,55 @@
-                  id star room  sloth
--------------------------------------
-5qTyscBWtXLRb04TXEdB true room0 slot0
-Kwery1cbJrx3ZFj6x1JU true room0 slot0
-zVUXQkHQtSiGJeIwVd05 true room0 slot0
-McfMVcKDdZv68NSo2JIJ true room0 slot0
-2S9XtGGq3ouHnkivEDKC true room0 slot0
+                  id	star	room	sloth
+---------------------------------------------
+
+                                                # Keynotes
+
+1dq7BXYKhL6uwE1ofw5V	false	room0	slot0	# KEYNOTE 1 fabien_tregan 1dq7BXYKhL6uwE1ofw5V
+XXXXXXXXXXXXXXXXXXXX	false	room0	slot0	# KEYNOTE 2
+
+                                                # Invitations
+
+5qTyscBWtXLRb04TXEdB	true	room0	slot0	# WebGPU: Next-generation 3D Graphics on the Web # web # Corantin Wallez # FR
+Kwery1cbJrx3ZFj6x1JU	true	room0	slot0	# L'histoire de la découverte d'une backdoor signé Oneplus # Native Mobile Apps FR
+zVUXQkHQtSiGJeIwVd05	true	room0	slot0	# 3 Techniques Faciles de manipulation # WTF # Marie Viley # FR
+McfMVcKDdZv68NSo2JIJ	true	room0	slot0	# Modern Forms in React # web # Erik Rasmussen # EN
+2S9XtGGq3ouHnkivEDKC	true	room0	slot0	# Rust, WebAssembly, and the future of Serverless # Cloud/Infra # Steve Klabnik # EN
+XXXXXXXXXXXXXXXXXXXX	false	room0	slot0	# Talk de Sébastien Blanc
+
+                                                # Sponsors
+
+XXXXXXXXXXXXXXXXXXXX	false	room0	slot0	# Talk sponsorisé Airbus: aOHds477R7FiM3cnWAXp
+
+                                                # Conférences
+
+R9O1S7M9oRMmwd0cNBaz	false	room0	slot0	# Premiers pas avec un microcontrôleur et Google Cloud IoT Core # IOT # Gautier Mechling (Nilhcem) # FR
+0MXH99V8NY9xyeurYCmA	false	room0	slot0	# The rise of the web # Web # Loïc Ortola (Takima) # FR
+fW4yvmVxjXb57vQJhIXu	false	room0	slot0	# Mon p*** de voyant moteur est encore allumé  # WTF # Mathieu Passenaud # FR
+PmoMEVHO3imfUIMXsPai	false	room0	slot0	# Four Diseases # WTF # Piotr Przybyl # EN
+pAMZmFT2wrfqPr9IdeXv	false	room0	slot0	# Le design de l'erreur # Method & Tools # François Teychene & Estelle Landry (Saagie/Elium) # FR
+iU4EzEThVDvpaHDsGjOO	false	room0	slot0	# Introduction à la programmation par contraintes # Big Data/ML/AI # Cyril Delmas (Lectra)# FR
+Gxr3XZR1HEu14tbneJLb	false	room0	slot0	# Votre API web passe-t-elle le contrôle technique ? # Method & Tools # Francois-Guillaume Ribreau (Ouest-France/Image-Charts) # FR
+KAH9Lyx0b2TKNSQVZNw2	false	room0	slot0	# Le burn-out agile # Method & Tools # Cedric Moulard (Open) # FR
+tOexEcqeKEztPbNmR4JT	false	room0	slot0	# Comprendre le rôle du noyau d'un système d'exploitation # Cloud/Infra # Alessio Coltellacci (Clever Cloud) # FR
+PjQDGsFIQoo1By4Ogv3q	false	room0	slot0	# Rust as a High-Level Language # Languages # Aleksey Kladov (Ferrous Systems) # EN
+niiUNFAFhYnPBiOrcDVf	false	room0	slot0	# Rockin' in the Angular World # Web # Wassim Chegham & Vincent Ogloblinsky (Microsoft/SII Ouest) # FR
+WwHpapkCgEg5IMW5vTId	false	room0	slot0	# Live coding musical : vous savez coder ? Devenez compositeur avec WebAudio et WebMIDI ! # Web # Sylvain Wallez (Elastic) # FR
+Qy836EfpA0wC4M6jYcTk	false	room0	slot0	# De Java à un exécutable natif : GraalVM et Quarkus changent la donne # Method & Tools # Guillaume Smet (RedHat) # FR
+RhWn82dKmICiQulwcVJF	false	room0	slot0	# The Freedom of Static Typing # Languages # Andrew Radev # EN
+Cej88MtlRVZrJRK0FJ2p	false	room0	slot0	# Allo Paris, ici San Francisco. VS Code? # Method & Tools # Olivier Leplus & Tiffany Souterre (Microsoft / JEMS Datafactory) # FR
+6E03tbU6L5w0IyjMi7yF	false	room0	slot0	# Authentication/Authorization Starters Battle # Method & Tools # Valeriane Venance (Clever Cloud) # FR
+xwAvvIJJfDdBD7N4oGa5	false	room0	slot0	# Monitoring OVH: 300k serveurs, 27 DCs une plateforme de métriques # Big Data/ML/AI # Horacio Gonzalez (OVH) # FR
+qXAvodXoMK3db8ZLcVwb	false	room0	slot0	# A la découverte de la réalité augmentée avec ARCore # Native mobile apps # Christophe Jollivet & Jérémy Voisin (Apside) # FR
+zDbtrtvdLPG1okj07wyI	false	room0	slot0	# "Numérique et environnement"  # WTF # Sébastien Brault (Orange) # FR
+ZsAGxn6UZi1hfzz2bwR7	false	room0	slot0	# Quand les ratés des IAs biais sociétaux # Big Data/ML/AI # Clément Duffau & Mélanie Ducoffe (Stack Labs / Airbus) # FR
+
+                                                # Quickies
+
+oiZTE4THbAJeaNVlLc03	false	room0	slot0	# Applications de Brainfuck, langage minimaliste mais Turing-complet # WTF # Theophile Wallez # FR
+hoiS7Cs5sWwXb632pLh2	false	room0	slot0	# Le troll dans ta machine --- Jean-Yves Girard # WTF # Guillaume Andrieu (MonkeyPatch) # FR
+cnRUAtQNZybQsQa03lAx	false	room0	slot0	# Machine learning avec des allumettes et des cotillons # Big Data/ML/AI # Nicolas Decoster (Magellium) # FR
+adcMAUSbsAK27dQJA4Iw	false	room0	slot0	# Développeurs en reconversion, développeurs quand même ! # WTF # Juliane Blier (SchoolMouv) # FR
+ZmSIPnuidcxjKLVfEKM8	false	room0	slot0	# Un distributeur automatique d'argent de poche pour les enfants # WTF # Richard Fagot # FR
+jABRUDzqext8Rx8CmA4j	false	room0	slot0	# 10 est une puissance de 2 # WTF # Gilles Debunne # FR
+pY6MCQBMfIYlIKfHdhL4	false	room0	slot0	# "47 ans et ils n'ont tjrs pas remarqué..." # WTF # Yves Boyez (Continental)# FR
+
 

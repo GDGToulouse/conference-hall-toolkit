@@ -23,8 +23,7 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
 
         companion object {
             // FIXME parse line to retrieve: room, slot(hour), slides, videoId
-            fun fromLine(event: Event, line: String): Selection {
-                val cells = line.split(' ').toList()
+            fun fromLine(event: Event, cells: List<String>): Selection {
                 val (talkId, sFeature, room, slot) = cells
                 val feature = "true" == sFeature
                 return Selection(event, talkId, feature, room, slot)
@@ -42,13 +41,17 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
         with(Events(eventId, apiKey)) {
             val parentFile = selectedTalks.absoluteFile.parentFile
 
-
             val selected =
                 selectedTalks.readLines()
+                    .asSequence()
                     .drop(2)
                     .map { it.trim() }
                     .filter { it.isNotBlank() }
+                    .map { it.split('\t').toList() }
+//                    .onEach { println(it) }
+                    .filter { it.size > 3 }
                     .map { Selection.fromLine(event, it) }
+                    .toList()
 
             selected.filter { it.talk == null }
                 .forEachIndexed { idx, (id, _) ->
@@ -124,8 +127,8 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
                   |key: ${key()}
                   |feature: $feature
                   |name: ${displayName?.rawYaml() ?: ""}
-                  |company: ${company?.rawYaml()?:""}
-                  |city: ${city?.rawYaml()?:""}
+                  |company: ${company?.rawYaml() ?: ""}
+                  |city: ${city?.rawYaml() ?: ""}
                   |photoURL: ${photoURL.rawYaml()}
                   |socials:
                   |${socials().joinToString("\n") {
@@ -147,8 +150,6 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
                 Logger.info { "Created file $file for ${speaker.displayName}" }
             }
 
-
         }
     }
-
 }
