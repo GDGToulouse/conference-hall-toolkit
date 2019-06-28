@@ -123,5 +123,17 @@
     "category": "gold",
     "logoExtension": "png",
     "jobs": []
+  },
+  {
+    "name": "Liberty Rider",
+    "category": "Soutien",
+    "logoExtension": "svg",
+    "jobs": []
+  },
+  {
+    "name": "Intuiface",
+    "category": "Startup",
+    "logoExtension": "png",
+    "jobs": []
   }
 ]
