@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm").version("1.3.30")
+    id("org.jetbrains.kotlin.jvm").version("1.3.41")
     application
 }
 
@@ -7,7 +7,7 @@ repositories {
     jcenter()
 }
 
-fun moshi(module: String, version: String = "1.5.0"): Any =
+fun moshi(module: String, version: String = "1.8.0"): Any =
     "com.squareup.moshi:moshi-$module:$version"
 
 dependencies {
@@ -18,7 +18,7 @@ dependencies {
     implementation(moshi("adapters"))
     implementation(moshi("kotlin"))
 
-    implementation("com.github.ajalt:clikt:1.7.0")
+    implementation("com.github.ajalt:clikt:2.1.0")
     implementation("com.github.ajalt:mordant:1.2.1")
     implementation("com.opencsv:opencsv:4.6")
 }

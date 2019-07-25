@@ -65,7 +65,7 @@ object GenerateSpeakers : CliktCommand(name = "gen", help = "Generate speakers a
                   |key: ${key()}
                   |title: ${title.rawYaml()}
                   |level: $level
-                  |formats: ${format()?.name ?: ""}
+                  |talkType: ${format()?.name ?: ""}
                   |tags:
                   |  - ${category()?.name ?: ""}
                   |speakers:

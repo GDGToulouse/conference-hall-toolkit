@@ -135,5 +135,65 @@
     "category": "Startup",
     "logoExtension": "png",
     "jobs": []
+  },
+  {
+    "name": "Cirruseo part of Accenture",
+    "category": "gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Apside",
+    "category": "gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Airbus",
+    "category": "Platinium",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Axileo",
+    "category": "gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Groupe Pierre Fabre",
+    "category": "gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "JFrog",
+    "category": "gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Infotel",
+    "category": "gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Github",
+    "category": "gold",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "Commit42",
+    "category": "soutien",
+    "logoExtension": "png",
+    "jobs": []
+  },
+  {
+    "name": "OneStock",
+    "category": "startup",
+    "logoExtension": "svg",
+    "jobs": []
   }
 ]
